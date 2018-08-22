@@ -5,6 +5,7 @@ import com.vonsowic.kata.exceptions.UnknownWordException;
 import com.vonsowic.kata.exceptions.WordsLengthNotEqualException;
 import org.junit.Test;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -105,5 +106,16 @@ public class KataSolverTest {
 
         // run test
         solver.findChain("cat", "dog");
+    }
+
+    @Test
+    public void shouldCreateSolverBasedOnFile() throws Exception {
+        KataSolver solver = KataSolver.createFromFile(new File(
+                getClass()
+                        .getClassLoader()
+                        .getResource("test_dictionary")
+                        .getFile()));
+
+        assertEquals(4, solver.findChain("donkey", "mongay").size());
     }
 }
