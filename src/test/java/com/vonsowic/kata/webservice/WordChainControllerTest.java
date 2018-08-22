@@ -1,7 +1,6 @@
 package com.vonsowic.kata.webservice;
 
 import com.vonsowic.kata.AppConfiguration;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +25,6 @@ public class WordChainControllerTest {
 
     static {
         AppConfiguration.setWordlistFileName("wordlist-small.txt");
-
-    }
-
-    @Before
-    public void setUp() {
-
     }
 
     @Test
