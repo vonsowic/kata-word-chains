@@ -50,7 +50,19 @@ public class KataSolverTest {
         assertEquals(Arrays.asList("abcd", "wbcd", "wxcd", "wxyd", "wxyz"), result);
         assertEquals(5, result.size());
     }
-    
+
+    @Test(expected = UnknownWordException.class)
+    public void shouldFailWhenFirstWordIsNull() {
+        KataSolver solver = new KataSolver();
+        solver.findChain(null, "dog");
+    }
+
+    @Test(expected = UnknownWordException.class)
+    public void shouldFailWhenSecondWordIsNull() {
+        KataSolver solver = new KataSolver();
+        solver.findChain("dog", null);
+    }
+
     @Test(expected = WordsLengthNotEqualException.class)
     public void shouldFailWhenWordsAreNotOfTheSameLength() {
         KataSolver solver = new KataSolver();
