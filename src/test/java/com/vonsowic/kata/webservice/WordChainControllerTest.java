@@ -1,5 +1,7 @@
 package com.vonsowic.kata.webservice;
 
+import com.vonsowic.kata.AppConfiguration;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,16 @@ public class WordChainControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    static {
+        AppConfiguration.setWordlistFileName("wordlist-small.txt");
+
+    }
+
+    @Before
+    public void setUp() {
+
+    }
 
     @Test
     public void shouldReturnListWithSolution4Words() throws Exception {
@@ -62,8 +74,8 @@ public class WordChainControllerTest {
     @Test
     public void shouldReturnConflictStatusWhenSolutionIsNotFound() throws Exception {
         mockMvc.perform(get("/api/chain")
-                .param("start", "Aliquippa's")
-                .param("end", "Alexandrine"))
+                .param("start", "ungrammaticality")
+                .param("end", "unreadablenesses"))
                 .andExpect(status().isConflict());
     }
 
