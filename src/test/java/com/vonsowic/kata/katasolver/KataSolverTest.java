@@ -9,14 +9,14 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class KataSolverTest {
 
     @Test
     public void shouldFindSolution() {
         // prepare data
-        List<String> words = Arrays.asList("cat", "dog", "cot", "cog");
+        List<String> words = Arrays.asList("cat", "cot", "cog", "dog");
 
         KataSolver solver = new KataSolver();
         solver.addWords(words);
@@ -47,10 +47,10 @@ public class KataSolverTest {
         Collection<String> result = solver.findChain("abcd", "wxyz");
 
         // validate result
-        assertEquals(words, result);
+        assertEquals(Arrays.asList("abcd", "wbcd", "wxcd", "wxyd", "wxyz"), result);
         assertEquals(5, result.size());
     }
-
+    
     @Test(expected = WordsLengthNotEqualException.class)
     public void shouldFailWhenWordsAreNotOfTheSameLength() {
         KataSolver solver = new KataSolver();
