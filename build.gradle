@@ -14,6 +14,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'application'
 apply plugin: 'jacoco'
 
 group = 'com.vonsowic'
@@ -39,5 +40,7 @@ jacocoTestReport {
         html.enabled = true
     }
 }
+
+mainClassName = "com.vonsowic.kata.App"
 
 check.dependsOn jacocoTestReport
