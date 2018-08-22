@@ -3,6 +3,7 @@ package com.vonsowic.kata.katasolver;
 import com.vonsowic.kata.exceptions.UnknownWordException;
 import com.vonsowic.kata.exceptions.WordsLengthNotEqualException;
 
+import java.io.*;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -38,5 +39,20 @@ public class KataSolver {
         }
 
         graphs.get(word.length()).addWord(word);
+    }
+
+    public static KataSolver createFromFile(File wordList) throws IOException {
+        KataSolver result = new KataSolver();
+
+        InputStreamReader reader = new InputStreamReader(new FileInputStream(wordList));
+        BufferedReader buffer = new BufferedReader(reader);
+        String line;
+        while ((line = buffer.readLine()) != null) {
+            result.addWord(line);
+        }
+
+        reader.close();
+        buffer.close();
+        return result;
     }
 }
