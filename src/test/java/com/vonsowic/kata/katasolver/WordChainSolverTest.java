@@ -12,14 +12,14 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class KataSolverTest {
+public class WordChainSolverTest {
 
     @Test
     public void shouldFindSolution() {
         // prepare data
         List<String> words = Arrays.asList("cat", "cot", "cog", "dog");
 
-        KataSolver solver = new KataSolver();
+        WordChainSolver solver = new WordChainSolver();
         solver.addWords(words);
 
         // run test
@@ -41,7 +41,7 @@ public class KataSolverTest {
                 "wxyz"
         );
 
-        KataSolver solver = new KataSolver();
+        WordChainSolver solver = new WordChainSolver();
         solver.addWords(words);
 
         // run test
@@ -54,19 +54,19 @@ public class KataSolverTest {
 
     @Test(expected = UnknownWordException.class)
     public void shouldFailWhenFirstWordIsNull() {
-        KataSolver solver = new KataSolver();
+        WordChainSolver solver = new WordChainSolver();
         solver.findChain(null, "dog");
     }
 
     @Test(expected = UnknownWordException.class)
     public void shouldFailWhenSecondWordIsNull() {
-        KataSolver solver = new KataSolver();
+        WordChainSolver solver = new WordChainSolver();
         solver.findChain("dog", null);
     }
 
     @Test(expected = WordsLengthNotEqualException.class)
     public void shouldFailWhenWordsAreNotOfTheSameLength() {
-        KataSolver solver = new KataSolver();
+        WordChainSolver solver = new WordChainSolver();
 
         // run test
         solver.findChain("cats", "dog");
@@ -77,7 +77,7 @@ public class KataSolverTest {
         // prepare data
         List<String> words = Arrays.asList("dog", "cot", "cog");
 
-        KataSolver solver = new KataSolver();
+        WordChainSolver solver = new WordChainSolver();
         solver.addWords(words);
 
         // run test
@@ -89,7 +89,7 @@ public class KataSolverTest {
         // prepare data
         List<String> words = Arrays.asList("cat", "cot", "cog");
 
-        KataSolver solver = new KataSolver();
+        WordChainSolver solver = new WordChainSolver();
         solver.addWords(words);
 
         // run test
@@ -101,7 +101,7 @@ public class KataSolverTest {
         // prepare data
         List<String> words = Arrays.asList("cat", "dog", "cog");
 
-        KataSolver solver = new KataSolver();
+        WordChainSolver solver = new WordChainSolver();
         solver.addWords(words);
 
         // run test
@@ -110,7 +110,7 @@ public class KataSolverTest {
 
     @Test
     public void shouldCreateSolverBasedOnFile() throws Exception {
-        KataSolver solver = KataSolver.createFromFile(new File(
+        WordChainSolver solver = WordChainSolver.createFromFile(new File(
                 getClass()
                         .getClassLoader()
                         .getResource("test_dictionary")

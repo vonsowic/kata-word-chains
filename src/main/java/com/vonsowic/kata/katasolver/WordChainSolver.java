@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.Collection;
 import java.util.HashMap;
 
-public class KataSolver {
+public class WordChainSolver {
 
     private final HashMap<Integer, WordChainGraph> graphs = new HashMap<>();
 
@@ -41,8 +41,8 @@ public class KataSolver {
         graphs.get(word.length()).addWord(word);
     }
 
-    public static KataSolver createFromFile(File wordList) throws IOException {
-        KataSolver result = new KataSolver();
+    public static WordChainSolver createFromFile(File wordList) throws IOException {
+        WordChainSolver result = new WordChainSolver();
 
         InputStreamReader reader = new InputStreamReader(new FileInputStream(wordList));
         BufferedReader buffer = new BufferedReader(reader);
