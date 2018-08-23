@@ -42,9 +42,7 @@ class WordChainGraph {
 
 
     Collection<String> findShortestSolution(String startWord, String endWord) {
-        if ( !graph.nodes().contains(startWord) || !graph.nodes().contains(endWord)) {
-            throw new UnknownWordException();
-        }
+        validateInput(startWord, endWord);
 
         Set<String> visited = new HashSet<>();
 
@@ -67,6 +65,12 @@ class WordChainGraph {
 
 
         throw new NoSolutionFoundException();
+    }
+
+    private void validateInput(String startWord, String endWord) {
+        if ( !graph.nodes().contains(startWord) || !graph.nodes().contains(endWord)) {
+            throw new UnknownWordException();
+        }
     }
 
 
