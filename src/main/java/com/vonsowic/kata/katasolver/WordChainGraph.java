@@ -56,7 +56,7 @@ class WordChainGraph {
 
             for (String word: getUnvisitedNeighborsOf(processedNode, visited) ) {
                 SolutionNode child = new SolutionNode(processedNode, word);
-                if (child.value.equals(endWord)) {
+                if (child.valueEquals(endWord)) {
                     return child.getFullPath();
                 }
 
@@ -106,6 +106,10 @@ class WordChainGraph {
             }
 
             return result;
+        }
+
+        boolean valueEquals(String anotherValue) {
+            return this.value.equals(anotherValue);
         }
     }
 }
