@@ -12,6 +12,13 @@ public class WordChainSolver {
     private final HashMap<Integer, WordChainGraph> graphs = new HashMap<>();
 
     public Collection<String> findChain(String startWord, String endWord) {
+        validateInput(startWord, endWord);
+
+        return this.graphs.get(startWord.length())
+                .findShortestSolution(startWord, endWord);
+    }
+
+    private void validateInput(String startWord, String endWord) {
         if (startWord == null || endWord == null) {
             throw new UnknownWordException("Arguments must not be null");
         }
@@ -23,10 +30,6 @@ public class WordChainSolver {
         if ( !this.graphs.containsKey(startWord.length())) {
             throw new UnknownWordException();
         }
-
-
-        return this.graphs.get(startWord.length())
-                .findShortestSolution(startWord, endWord);
     }
 
     public void addWords(Collection<String> words) {

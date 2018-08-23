@@ -42,9 +42,7 @@ class WordChainGraph {
 
 
     Collection<String> findShortestSolution(String startWord, String endWord) {
-        if ( !graph.nodes().contains(startWord) || !graph.nodes().contains(endWord)) {
-            throw new UnknownWordException();
-        }
+        validateInput(startWord, endWord);
 
         Set<String> visited = new HashSet<>();
 
@@ -56,7 +54,7 @@ class WordChainGraph {
 
             for (String word: getUnvisitedNeighborsOf(processedNode, visited) ) {
                 SolutionNode child = new SolutionNode(processedNode, word);
-                if (child.value.equals(endWord)) {
+                if (child.valueEquals(endWord)) {
                     return child.getFullPath();
                 }
 
@@ -67,6 +65,12 @@ class WordChainGraph {
 
 
         throw new NoSolutionFoundException();
+    }
+
+    private void validateInput(String startWord, String endWord) {
+        if ( !graph.nodes().contains(startWord) || !graph.nodes().contains(endWord)) {
+            throw new UnknownWordException();
+        }
     }
 
 
@@ -106,6 +110,10 @@ class WordChainGraph {
             }
 
             return result;
+        }
+
+        boolean valueEquals(String anotherValue) {
+            return this.value.equals(anotherValue);
         }
     }
 }
