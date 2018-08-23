@@ -96,6 +96,16 @@ public class WordChainSolverTest {
         solver.findChain("cat", "dog");
     }
 
+    @Test(expected = UnknownWordException.class)
+    public void shouldFailWhenThereIsNoWordWithRequiredLength() {
+        // prepare data
+        WordChainSolver solver = new WordChainSolver();
+        solver.addWords(Arrays.asList("cat", "cot", "cog", "code", "ruby"));
+
+        // run test
+        solver.findChain("donkey", "money");
+    }
+
     @Test(expected = NoSolutionFoundException.class)
     public void shouldFailWhenNoWordChainIsFound() {
         // prepare data
