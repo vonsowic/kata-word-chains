@@ -103,7 +103,7 @@ public class WordChainSolverTest {
         solver.addWords(Arrays.asList("cat", "cot", "cog", "code", "ruby"));
 
         // run test
-        solver.findChain("donkey", "money");
+        solver.findChain("donkey", "monkey");
     }
 
     @Test(expected = NoSolutionFoundException.class)
