@@ -8,10 +8,11 @@ Solution for [kata word chains](http://codekata.com/kata/kata19-word-chains).
 
 ## Manual test
 Service is available on AWS. Check example requests:
- - [cat-dog](http://ec2-18-197-109-160.eu-central-1.compute.amazonaws.com:8080/api/chain?start=cat&end=dog)
- - [ruby-code](http://ec2-18-197-109-160.eu-central-1.compute.amazonaws.com:8080/api/chain?start=ruby&end=code)
- - [gold-lead](http://ec2-18-197-109-160.eu-central-1.compute.amazonaws.com:8080/api/chain?start=gold&end=lead)
-
+ - [cat-dog](http://ec2-35-158-97-231.eu-central-1.compute.amazonaws.com:8080/api/chain?start=cat&end=dog)
+ - [ruby-code](http://ec2-35-158-97-231.eu-central-1.compute.amazonaws.com:8080/api/chain?start=ruby&end=code)
+ - [gold-lead](http://ec2-35-158-97-231.eu-central-1.compute.amazonaws.com:8080/api/chain?start=gold&end=lead)
+ - [asset-coder](http://ec2-35-158-97-231.eu-central-1.compute.amazonaws.com:8080/api/chain?start=asset&end=coder)
+ 
 
 ## How to execute
 `gradle run`
